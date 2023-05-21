@@ -1,0 +1,31 @@
+## pipelines >> stages >> jobs >> tasks/steps
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: Build
+  jobs:
+  - job: FirstJob
+    steps:
+    - bash: echo first job
+  - job: SecondJob
+    steps:
+    - bash: echo second job
+- stage: DevDeploy
+  jobs:
+  - job: DevJob
+    steps:
+    - bash: echo DevJob
+- stage: QADeploy
+  jobs:
+  - job:
+    steps:
+    - bash: echo QAJob
+- stage: ProdDeploy
+  jobs:
+  - job: ProdJob
+    steps:
+    - bash: echo prodjob
